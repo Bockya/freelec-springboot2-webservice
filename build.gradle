@@ -1,0 +1,39 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.9'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group 'com.jojoldu.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+// 각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지 정함
+repositories {
+    mavenCentral() // 중앙 저장소
+    jcenter() // 라이브러리 업로드 간단하게 해줌
+}
+
+// 프로젝트 개발에 필요한 의존성들 선언
+dependencies {
+    // spring boot
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.2'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache:2.5.2'
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    // db
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.2'
+    runtimeOnly 'com.h2database:h2:1.4.200'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
+
+    // junit
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.2'
+}
+
+// junit5
+test {
+    useJUnitPlatform()
+}
